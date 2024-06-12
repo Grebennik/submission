@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\SubmissionRepository;
 use App\DTOs\SubmissionData;
+use \App\Events\SubmissionSaved;
 
 class SubmissionService
 {
@@ -22,6 +23,6 @@ class SubmissionService
             'message' => $data->message,
         ]);
 
-        event(new \App\Events\SubmissionSaved($submission));
+        event(new SubmissionSaved($submission));
     }
 }
